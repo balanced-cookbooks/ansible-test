@@ -2,16 +2,16 @@ language: ruby
 rvm:
 - 2.0.0
 bundler_args: --deployment --binstubs
+install:
+  - sudo pip install "ansible>=1.7.0,<1.8"
 script:
 - ansible-playbook -i test/inventory site.yml --syntax-check
 - ansible-playbook -i test/inventory site.yml --connection=local --sudo
 # Run the role/playbook again, checking to make sure it's idempotent.
 - >
-  ansible-playbook -i tests/inventory site.yml --connection=local --sudo
+  ansible-playbook -i test/inventory site.yml --connection=local --sudo
   | grep -q 'changed=0.*failed=0'
   && (echo 'Idempotence test: pass' && exit 0)
   || (echo 'Idempotence test: fail' && exit 1)
 - ./bin/rake spec
-install:
-  - pip install "ansible>=1.7.0,<1.8"
 
