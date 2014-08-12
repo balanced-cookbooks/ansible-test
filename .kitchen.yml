@@ -15,5 +15,5 @@ platforms:
   - name: ubuntu-12.04
 
 suites:
-  - name: local
+  - name: default
     playbook: site.yml
