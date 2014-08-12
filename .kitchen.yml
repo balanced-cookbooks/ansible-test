@@ -1,0 +1,19 @@
+---
+driver:
+    name: vagrant
+
+provisioner:
+  name: ansible_playbook
+  roles_path: roles
+  require_ansible_repo: true
+  hosts: web-servers
+  ansible_verbose: true
+  extra_vars:
+    a: b
+
+platforms:
+  - name: ubuntu-12.04
+
+suites:
+  - name: local
+    playbook: site.yml
