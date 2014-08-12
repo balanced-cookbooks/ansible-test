@@ -4,6 +4,7 @@ rvm:
 bundler_args: --deployment --binstubs
 install:
   - sudo pip install "ansible>=1.7.0,<1.8"
+  - bundle install --binstubs
 script:
 - ansible-playbook -i test/inventory site.yml --syntax-check
 - ansible-playbook -i test/inventory site.yml --connection=local --sudo
